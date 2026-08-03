@@ -1,0 +1,43 @@
+# Environment dan data rahasia
+.env
+.env.*
+!.env.example
+
+# React, Vite, dan Node.js
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+
+# Golang
+*.exe
+*.test
+*.out
+bin/
+backend/bin/
+
+# File upload aplikasi
+uploads/
+backend/uploads/
+
+# Data dan backup database
+mysql_data/
+db_data/
+backups/
+*.dump
+
+# Log
+*.log
+logs/
+
+# Editor
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store

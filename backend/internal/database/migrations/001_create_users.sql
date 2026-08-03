@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_number VARCHAR(30) NOT NULL UNIQUE,
+    full_name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    position VARCHAR(100) NULL,
+    division VARCHAR(100) NULL,
+    role ENUM('EMPLOYEE', 'ADMIN', 'APPROVER', 'FINANCE')
+        NOT NULL DEFAULT 'EMPLOYEE',
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_users_role (role),
+    INDEX idx_users_active (is_active)
+)

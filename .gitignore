@@ -1,0 +1,34 @@
+# Environment
+.env
+.env.docker
+**/.env
+
+# Go
+backend/bin/
+backend/coverage.out
+backend/jedi-reimbursement-api
+backend/jedi-reimbursement-api.exe
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Uploaded receipts
+backend/storage/uploads/*
+!backend/storage/uploads/.gitkeep
+!backend/storage/uploads/parking-receipts/
+!backend/storage/uploads/parking-receipts/.gitkeep
+
+# Database backups
+backups/*
+!backups/.gitkeep
+
+# Docker local data
+mysql_data/
+
+# IDE dan sistem operasi
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

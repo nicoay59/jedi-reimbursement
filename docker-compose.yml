@@ -1,0 +1,116 @@
+name: jedi-reimbursement
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: jedi-reimbursement-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_NAME:-jedi_reimbursement}
+      MYSQL_USER: ${DB_USER:-jedi_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-jedi_password}
+      TZ: ${TZ:-Asia/Jakarta}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - jedi_reimbursement_mysql_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -uroot -p\"$${MYSQL_ROOT_PASSWORD}\" --silent"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    networks:
+      - jedi_reimbursement_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jedi-reimbursement-backend
+    restart: unless-stopped
+    environment:
+      APP_NAME: Jedi Reimbursement API
+      APP_ENV: production
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8080
+      FRONTEND_URL: http://localhost:${FRONTEND_PORT:-8088}
+
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-jedi_reimbursement}
+      DB_USER: ${DB_USER:-jedi_user}
+      DB_PASSWORD: ${DB_PASSWORD:-jedi_password}
+      DB_MAX_OPEN_CONNS: ${DB_MAX_OPEN_CONNS:-20}
+      DB_MAX_IDLE_CONNS: ${DB_MAX_IDLE_CONNS:-10}
+      DB_CONN_MAX_LIFETIME_MINUTES: ${DB_CONN_MAX_LIFETIME_MINUTES:-30}
+
+      JWT_SECRET: ${JWT_SECRET:-change-this-final-jwt-secret-before-production-2026}
+      JWT_EXPIRES_IN_MINUTES: ${JWT_EXPIRES_IN_MINUTES:-480}
+
+      UPLOAD_DIR: /app/storage/uploads
+      PARKING_RECEIPT_MAX_MB: ${PARKING_RECEIPT_MAX_MB:-5}
+
+      ADMIN_EMPLOYEE_NUMBER: ${ADMIN_EMPLOYEE_NUMBER:-ADM001}
+      ADMIN_FULL_NAME: ${ADMIN_FULL_NAME:-Administrator}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@jedi.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin123!}
+      ADMIN_POSITION: ${ADMIN_POSITION:-System Administrator}
+      ADMIN_DIVISION: ${ADMIN_DIVISION:-Information Technology}
+
+      EMPLOYEE_EMPLOYEE_NUMBER: ${EMPLOYEE_EMPLOYEE_NUMBER:-EMP001}
+      EMPLOYEE_FULL_NAME: ${EMPLOYEE_FULL_NAME:-Karyawan Contoh}
+      EMPLOYEE_EMAIL: ${EMPLOYEE_EMAIL:-employee@jedi.local}
+      EMPLOYEE_PASSWORD: ${EMPLOYEE_PASSWORD:-Employee123!}
+      EMPLOYEE_POSITION: ${EMPLOYEE_POSITION:-Staff}
+      EMPLOYEE_DIVISION: ${EMPLOYEE_DIVISION:-Operations}
+
+      TZ: ${TZ:-Asia/Jakarta}
+    volumes:
+      - jedi_reimbursement_uploads:/app/storage/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -qO- http://localhost:8080/api/v1/health >/dev/null || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    networks:
+      - jedi_reimbursement_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /api/v1
+    container_name: jedi-reimbursement-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8088}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - jedi_reimbursement_network
+
+volumes:
+  jedi_reimbursement_mysql_data:
+    name: ${MYSQL_VOLUME_NAME:-jedi_reimbursement_mysql_data}
+  jedi_reimbursement_uploads:
+    name: ${UPLOAD_VOLUME_NAME:-jedi_reimbursement_uploads}
+
+networks:
+  jedi_reimbursement_network:
+    driver: bridge

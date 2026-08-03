@@ -1,0 +1,207 @@
+jedi-reimbursement-professional-v1.2.0/
+└── .env.docker.example
+└── .gitignore
+└── backend/
+└── backup-database.bat
+└── backups/
+└── CHANGELOG_PART_8.md
+└── CHANGELOG_V1.1.1.md
+└── CHANGELOG_V1.2.0.md
+└── docker-compose.yml
+└── docker-logs.bat
+└── docker-reset.bat
+└── docker-start.bat
+└── docker-stop.bat
+└── docs/
+└── frontend/
+└── PARKING_CLAIM_REVISION.md
+└── PROJECT_STRUCTURE.txt
+└── README.md
+└── RELEASE_NOTES.md
+└── restore-database.bat
+└── run-all.bat
+└── run-backend.bat
+└── run-frontend.bat
+└── setup-windows.bat
+└── smoke-test.bat
+└── smoke-test.ps1
+└── start-database.bat
+└── UI_REVISION.md
+└── VALIDATION.md
+└── verify-project.bat
+└── VERSION
+    └── .dockerignore
+    └── .env.example
+    └── cmd/
+    └── docker-entrypoint.sh
+    └── Dockerfile
+    └── go.mod
+    └── internal/
+    └── README.md
+    └── storage/
+    └── .gitkeep
+    └── API.md
+    └── ARCHITECTURE.md
+    └── BAB_IV_GUIDE.md
+    └── DEPLOYMENT.md
+    └── Jedi_Reimbursement.postman_collection.json
+    └── RELEASE_CHECKLIST.md
+    └── ROADMAP.md
+    └── SECURITY.md
+    └── TEST_CASES.md
+    └── TROUBLESHOOTING.md
+    └── USER_MANUAL.md
+    └── WINDOWS_GUIDE.md
+    └── .dockerignore
+    └── .env.example
+    └── Dockerfile
+    └── index.html
+    └── nginx.conf
+    └── package.json
+    └── README.md
+    └── src/
+    └── vite.config.js
+        └── api/
+        └── migrate/
+        └── seed/
+        └── wait-db/
+        └── config/
+        └── database/
+        └── dto/
+        └── handlers/
+        └── middleware/
+        └── models/
+        └── repositories/
+        └── responses/
+        └── routes/
+        └── security/
+        └── services/
+        └── storage/
+        └── uploads/
+        └── App.jsx
+        └── components/
+        └── constants/
+        └── context/
+        └── hooks/
+        └── main.jsx
+        └── pages/
+        └── routes/
+        └── services/
+        └── styles/
+        └── utils/
+            └── main.go
+            └── main.go
+            └── main.go
+            └── main.go
+            └── config.go
+            └── config_test.go
+            └── migrations/
+            └── migrator.go
+            └── migrator_test.go
+            └── mysql.go
+            └── auth.go
+            └── claim_review.go
+            └── overtime_claim.go
+            └── parking_claim.go
+            └── report.go
+            └── access_handler.go
+            └── auth_handler.go
+            └── claim_review_handler.go
+            └── health_handler.go
+            └── overtime_claim_handler.go
+            └── parking_claim_handler.go
+            └── report_handler.go
+            └── auth.go
+            └── auth_test.go
+            └── cors.go
+            └── logger.go
+            └── recovery.go
+            └── request_id.go
+            └── role.go
+            └── security_headers.go
+            └── security_headers_test.go
+            └── claim_review.go
+            └── claim_status.go
+            └── claim_status_history.go
+            └── overtime_claim.go
+            └── parking_claim.go
+            └── report.go
+            └── user.go
+            └── claim_review_repository.go
+            └── errors.go
+            └── overtime_claim_repository.go
+            └── parking_claim_repository.go
+            └── report_repository.go
+            └── user_repository.go
+            └── response.go
+            └── routes.go
+            └── jwt.go
+            └── jwt_test.go
+            └── password.go
+            └── password_test.go
+            └── auth_service.go
+            └── auth_service_test.go
+            └── claim_review_service.go
+            └── claim_review_service_test.go
+            └── overtime_claim_service.go
+            └── overtime_claim_service_test.go
+            └── parking_claim_service.go
+            └── parking_claim_service_test.go
+            └── report_service.go
+            └── report_service_test.go
+            └── receipt_storage.go
+            └── receipt_storage_test.go
+            └── parking-receipts/
+            └── AppIcon.jsx
+            └── AppNavbar.jsx
+            └── ClaimStatusBadge.jsx
+            └── ClaimTypeBadge.jsx
+            └── DashboardLayout.jsx
+            └── DashboardNavbar.jsx
+            └── EmptyState.jsx
+            └── ErrorBoundary.jsx
+            └── LoadingScreen.jsx
+            └── PageHeader.jsx
+            └── StatCard.jsx
+            └── TrendChart.jsx
+            └── roles.js
+            └── AuthContext.jsx
+            └── useAuth.js
+            └── usePathname.js
+            └── AdminClaimDetailPage.jsx
+            └── AdminClaimListPage.jsx
+            └── AdminDashboardPage.jsx
+            └── AdminReportPage.jsx
+            └── CreateOvertimeClaimPage.jsx
+            └── CreateParkingClaimPage.jsx
+            └── EmployeeDashboardPage.jsx
+            └── ForbiddenPage.jsx
+            └── LoginPage.jsx
+            └── NotFoundPage.jsx
+            └── OvertimeClaimDetailPage.jsx
+            └── OvertimeClaimListPage.jsx
+            └── ParkingClaimDetailPage.jsx
+            └── ParkingClaimListPage.jsx
+            └── AppRoutes.jsx
+            └── ProtectedRoute.jsx
+            └── Redirect.jsx
+            └── RoleRoute.jsx
+            └── accessService.js
+            └── adminClaimService.js
+            └── apiClient.js
+            └── authService.js
+            └── healthService.js
+            └── overtimeClaimService.js
+            └── parkingClaimService.js
+            └── reportService.js
+            └── global.css
+            └── formatters.js
+            └── navigation.js
+                └── 001_create_users.sql
+                └── 002_create_parking_claims.sql
+                └── 003_create_overtime_claims.sql
+                └── 004_create_claim_status_histories.sql
+                └── 005_add_parking_receipt_metadata.sql
+                └── 006_backfill_claim_status_histories.sql
+                └── 007_add_parking_claim_date_range.sql
+                └── .gitkeep
