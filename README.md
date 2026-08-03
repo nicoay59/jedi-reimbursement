@@ -1,9 +1,5 @@
 # Reimbursement Portal — Corporate Professional Build
 
-Part 8 adalah paket final kumulatif dari Part 1 sampai Part 7. Proyek sudah
-mencakup autentikasi, klaim parkir, klaim lembur, persetujuan administrator,
-dashboard, laporan, ekspor CSV, dokumentasi Kerja Praktik, serta dua cara
-menjalankan aplikasi: mode pengembangan dan mode Docker penuh.
 
 ## Versi
 
@@ -12,11 +8,6 @@ menjalankan aplikasi: mode pengembangan dan mode Docker penuh.
 ```
 
 
-## Corporate Professional UI
-
-Versi 1.2.0 menggunakan tampilan perusahaan yang lebih formal dengan corporate
-navigation, active menu, dashboard berbasis ikon, form dan tabel yang konsisten,
-serta desain responsif untuk penggunaan internal PT. Jedi Global Teknologi.
 
 ## Teknologi
 
@@ -202,8 +193,3 @@ Lihat folder `docs`:
 - `RELEASE_CHECKLIST.md`
 - `TROUBLESHOOTING.md`
 
-## Catatan Final
-
-Part 8 tidak menambahkan tabel baru. Seluruh migration Part 1–7 tetap digunakan.
-Paket final dirancang untuk bahan Kerja Praktik, demonstrasi, pengujian, dan
-pengembangan berikutnya.
